@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just One Question ❤️</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:Arial, sans-serif;
+    }
+
+    body{
+        min-height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        padding:20px;
+        background:#f54882;
+    }
+
+    .card{
+        width:min(440px, 100%);
+        background:black;
+        padding:30px 25px;
+        border-radius:24px;
+        text-align:center;
+        box-shadow:0 10px 30px rgba(0,0,0,.2);
+    }
+
+    h1{
+        color:white;
+        margin-bottom:22px;
+        font-size:20px;
+        line-height:2.0;
+    }
+
+    .buttons{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:16px;
+        position:relative;
+        width:100%;
+        margin:auto;
+        min-height:120px;
+
+    }
+
+    button{
+        flex:1 1 130px;
+        min-width:120px;
+        padding:14px 24px;
+        border:none;
+        border-radius:12px;
+        font-size:18px;
+        cursor:pointer;
+        transition:transform .2s, background .2s;
+        touch-action:manipulation;
+    }
+
+    button:active{
+        transform:scale(0.98);
+    }
+
+    #yesBtn{
+        flex:0 2 auto;
+        width:20%;
+        height: 50%;
+        background:#28a745;
+        color:white;
+        position:relative;
+    }
+
+    #noBtn{
+        background:#dc3545;
+        color:white;
+        position:relative;
+        height: 50px;
+         width:20px;
+    }
+
+    #message{
+        margin-top:28px;
+        font-size:clamp(1.2rem, 2.5vw, 1.4rem);
+        color:#ff3366;
+        font-weight:bold;
+        min-height:3rem;
+    }
+
+    @media (max-width: 50px) {
+        .card{
+            padding:24px 18px;
+        }
+
+        .buttons{
+            min-height:20px;
+        }
+
+        button{
+            font-size:26px;
+            padding:14px 18px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>❤️Click YES for a surprise❤️ <br></br>❤️Click YNO to see the magic ❤️</h1>
+
+    <div class="buttons">
+        <button id="yesBtn">NO ❤️</button>
+        <button id="noBtn">YES 💔</button>
+    </div>
+
+    <div id="message"></div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+
+function moveButton(){
+    const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+    const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.position = "fixed";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("touchstart", function(e){
+    e.preventDefault();
+    moveButton();
+});
+
+document.getElementById("yesBtn").addEventListener("click", function(){
+    window.location.href = "yes.html";
+});
+</script>
+
+</body>
+</html>
